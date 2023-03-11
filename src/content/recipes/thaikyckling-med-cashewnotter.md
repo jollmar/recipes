@@ -8,7 +8,7 @@ originalRecipeLinkText: "Zeinas kitchen"
 baseIngredients:
   [
     { title: "Cashewnötter (neutrala)", amount: 2, suffix: "dl" },
-    { title: "Oumph! The Chunk", amount: 280, suffix: "g" },
+    { title: "Oumph! The Chunk", amount: 1, suffix: "paket" },
     { title: "Torkad chili", amount: 1, suffix: "st" },
     { title: "Grön paprika", amount: 1, suffix: "st" },
     { title: "Röd paprika", amount: 1, suffix: "st" },

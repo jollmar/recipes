@@ -1,6 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
+import IngredientAmount from "../components/IngredientAmount";
+import RecipeResizedAlert from "../components/RecipeResizedAlert";
+import ServingsResizer from "../components/ServingsResizer";
 import SiteLayout from "./SiteLayout.astro";
 
 type Props = CollectionEntry<"recipes">["data"];
@@ -24,7 +27,7 @@ const {
   <article>
     {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
     <h1 class="text-3xl mt-2">{title}</h1>
-    <h3 class="text-xl mb-2">{portions} portioner</h3>
+    <ServingsResizer portions={portions} client:load />
     <div class="text-sm">
       Tillagd <FormattedDate date={pubDate} />
       {
@@ -49,6 +52,8 @@ const {
     }
     <hr class="mt-4" />
 
+    <RecipeResizedAlert portions={portions} client:load />
+
     <div class="md:grid md:grid-cols-7 gap-8">
       <ul class="col-span-3">
         {
@@ -59,9 +64,11 @@ const {
                 {baseIngredients.map((ingredient) => (
                   <li class="flex justify-between">
                     <span>{ingredient.title}</span>
-                    <span>
-                      {ingredient.amount} {ingredient.suffix}
-                    </span>
+                    <IngredientAmount
+                      client:load
+                      portions={portions}
+                      ingredient={ingredient}
+                    />
                   </li>
                 ))}
               </>
@@ -77,9 +84,11 @@ const {
                   {categorizedIngredients[category].map((ingredient) => (
                     <li class="flex justify-between">
                       <span>{ingredient.title}</span>
-                      <span>
-                        {ingredient.amount} {ingredient.suffix}
-                      </span>
+                      <IngredientAmount
+                        client:load
+                        portions={portions}
+                        ingredient={ingredient}
+                      />
                     </li>
                   ))}
                 </ul>

@@ -1,0 +1,46 @@
+import { useStore } from "@nanostores/react";
+import { useEffect } from "react";
+import { portions } from "../store";
+
+type Props = {
+  portions: number;
+};
+export default function RecipeResizedAlert(props: Props) {
+  const $portions = useStore(portions);
+
+  useEffect(() => {
+    portions.set(props.portions);
+  }, []);
+
+  if (props.portions === $portions) {
+    return null;
+  }
+  return (
+    <div className="mt-4 alert alert-warning shadow-lg">
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="stroke-current flex-shrink-0 h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          />
+        </svg>
+        <span>Receptets antal portioner har ändrats</span>
+      </div>
+      <div className="flex-none">
+        <button
+          className="btn btn-sm btn-ghost"
+          onClick={() => portions.set(props.portions)}
+        >
+          Återställ
+        </button>
+      </div>
+    </div>
+  );
+}

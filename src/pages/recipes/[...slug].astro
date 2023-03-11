@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import Recipe from "../../layouts/Recipe.astro";
+import { portions } from "../../store";
 
 export async function getStaticPaths() {
   const recipes = await getCollection("recipes");
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"recipes">;
 
 const recipe = Astro.props;
-/* const { Content } = await recipe.render(); */
+portions.set(recipe.data.portions);
 ---
 
 <Recipe {...recipe.data} />
