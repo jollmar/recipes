@@ -1,0 +1,23 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import { getCollection } from "astro:content";
+import Drawer from "../components/Drawer.astro";
+
+const { title, description } = Astro.props;
+const recipes = (await getCollection("recipes")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<html lang="sv" data-theme="lemonade">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Drawer recipes={recipes}>
+      <slot />
+    </Drawer>
+  </body>
+</html>

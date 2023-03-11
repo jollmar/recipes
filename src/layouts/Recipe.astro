@@ -1,0 +1,99 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import SiteLayout from "./SiteLayout.astro";
+
+type Props = CollectionEntry<"recipes">["data"];
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  baseIngredients,
+  categorizedIngredients,
+  portions,
+  steps,
+  originalRecipeLink,
+  originalRecipeLinkText,
+} = Astro.props;
+---
+
+<SiteLayout title={title} description={description}>
+  <article>
+    {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+    <h1 class="text-3xl mt-2">{title}</h1>
+    <h3 class="text-xl mb-2">{portions} portioner</h3>
+    <div class="text-sm">
+      Tillagd <FormattedDate date={pubDate} />
+      {
+        originalRecipeLink && (
+          <div>
+            Originalrecept:{" "}
+            <a class="link" href={originalRecipeLink} target="_blank">
+              {originalRecipeLinkText
+                ? originalRecipeLinkText
+                : originalRecipeLink}
+            </a>
+          </div>
+        )
+      }
+    </div>
+    {
+      updatedDate && (
+        <div class="last-updated-on">
+          Uppdaterad <FormattedDate date={updatedDate} />
+        </div>
+      )
+    }
+    <hr class="mt-4" />
+
+    <div class="grid grid-cols-7 gap-8">
+      <ul class="col-span-3">
+        {
+          baseIngredients && (
+            <>
+              <li class="font-bold mt-4">Ingredienser</li>
+              <>
+                {baseIngredients.map((ingredient) => (
+                  <li class="flex justify-between">
+                    <span>{ingredient.title}</span>
+                    <span>
+                      {ingredient.amount} {ingredient.suffix}
+                    </span>
+                  </li>
+                ))}
+              </>
+            </>
+          )
+        }
+        {
+          categorizedIngredients &&
+            Object.keys(categorizedIngredients).map((category) => (
+              <>
+                <li class="font-bold mt-4">{category}</li>
+                <ul>
+                  {categorizedIngredients[category].map((ingredient) => (
+                    <li class="flex justify-between">
+                      <span>{ingredient.title}</span>
+                      <span>
+                        {ingredient.amount} {ingredient.suffix}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ))
+        }
+      </ul>
+
+      <div class="col-span-4">
+        <h3 class="font-bold mt-4">Gör såhär</h3>
+        <ul class="ml-5 list-disc">
+          {steps.map((step) => <li>{step}</li>)}
+        </ul>
+      </div>
+    </div>
+  </article>
+</SiteLayout>

@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { SITE_TITLE } from "../consts";
+
+interface Props {
+  recipes: CollectionEntry<"recipes">[];
+}
+const { recipes } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<div class="drawer drawer-mobile">
+  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col">
+    <!-- Navbar -->
+    <div
+      class="sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-sm"
+    >
+      <div class="w-full navbar">
+        <div class="flex-none lg:hidden">
+          <label for="my-drawer-3" class="btn btn-square btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="inline-block w-6 h-6 stroke-current"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path></svg
+            >
+          </label>
+        </div>
+        <div class="flex-1 px-2 mx-2">
+          <h1 class="font-bold">{SITE_TITLE}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="p-10">
+      <slot />
+    </div>
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-3" class="drawer-overlay"></label>
+    <ul class="menu p-4 w-80 bg-base-200 text-base-content">
+      {
+        recipes &&
+          recipes.map((recipe) => (
+            <li>
+              <a
+                class={
+                  currentPath === `recipes/${recipe.slug}/` ||
+                  currentPath === `recipes/${recipe.slug}`
+                    ? "active"
+                    : ""
+                }
+                href={`/recipes/${recipe.slug}/`}
+              >
+                {recipe.data.title}
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+  </div>
+</div>
