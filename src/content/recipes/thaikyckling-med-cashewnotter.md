@@ -16,7 +16,7 @@ baseIngredients:
     { title: "Vitlöksklyftor", amount: 4, suffix: "st" },
     { title: "Ingefära", amount: 1, suffix: "msk" },
     { title: "Salladslök", amount: 4, suffix: "st" },
-    { title: "Majsstärkelse", amount: 1, suffix: "dl" },
+    { title: "Majsstärkelse", amount: 2, suffix: "msk" },
   ]
 categorizedIngredients:
   {
