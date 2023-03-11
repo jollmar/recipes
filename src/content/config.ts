@@ -11,6 +11,7 @@ const suffixSchema = z.enum([
   "kruka",
   "paket",
   "portioner",
+  "krm",
 ]);
 
 const ingredientSchema = z.object({
