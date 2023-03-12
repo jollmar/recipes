@@ -1,8 +1,11 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { Content } from "../content/home/index.md";
 ---
 
 <SiteLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <h1>Välj ett recept..</h1>
+  <article class="prose">
+    <Content />
+  </article>
 </SiteLayout>
