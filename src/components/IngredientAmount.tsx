@@ -1,14 +1,12 @@
 import { useStore } from "@nanostores/preact";
 import { useEffect } from "preact/hooks";
+import type { z } from "zod";
+import type { ingredientSchema } from "../content/config";
 import { portions } from "../store";
 
 type Props = {
   portions: number;
-  ingredient: {
-    // todo use zod from config.ts
-    amount: number;
-    suffix: string;
-  };
+  ingredient: Pick<z.infer<typeof ingredientSchema>, "amount" | "suffix">;
 };
 
 export default function IngredientAmount(props: Props) {

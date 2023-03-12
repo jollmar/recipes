@@ -14,7 +14,7 @@ const suffixSchema = z.enum([
   "krm",
 ]);
 
-const ingredientSchema = z.object({
+export const ingredientSchema = z.object({
   title: z.string(),
   amount: z.number(),
   suffix: suffixSchema,
