@@ -1,5 +1,5 @@
-import { useStore } from "@nanostores/react";
-import { useEffect } from "react";
+import { useStore } from "@nanostores/preact";
+import { useEffect } from "preact/hooks";
 import { portions } from "../store";
 
 type Props = {
