@@ -24,7 +24,7 @@ const {
 ---
 
 <SiteLayout title={title} description={description}>
-  <article>
+  <article class="max-w-5xl w-full">
     {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
     <h1 class="text-3xl mt-2">{title}</h1>
     <ServingsResizer servings={servings} client:load />
