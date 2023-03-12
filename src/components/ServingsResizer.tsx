@@ -1,24 +1,24 @@
 import { useStore } from "@nanostores/preact";
 import { useEffect } from "preact/hooks";
-import { portions } from "../store";
+import { servings } from "../store";
 
 type Props = {
-  portions: number;
+  servings: number;
 };
 
 export default function ServingsResizer(props: Props) {
-  const $portions = useStore(portions);
+  const $servings = useStore(servings);
 
   useEffect(() => {
-    portions.set(props.portions);
+    servings.set(props.servings);
   }, []);
 
   return (
     <div className="my-4 flex items-center gap-4">
       <button
         className="btn-sm btn btn-circle btn-outline"
-        disabled={$portions === 1}
-        onClick={() => portions.set($portions - 1)}
+        disabled={$servings === 1}
+        onClick={() => servings.set($servings - 1)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +31,11 @@ export default function ServingsResizer(props: Props) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
         </svg>
       </button>
-      <h3 className="text-xl">{$portions} portioner</h3>
+      <h3 className="text-xl">{$servings} portioner</h3>
       <button
         className="btn-sm btn btn-circle btn-outline"
-        disabled={$portions === 12}
-        onClick={() => portions.set($portions + 1)}
+        disabled={$servings === 12}
+        onClick={() => servings.set($servings + 1)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

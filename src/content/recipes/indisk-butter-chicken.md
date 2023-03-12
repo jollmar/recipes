@@ -2,7 +2,7 @@
 title: "Indisk butter chicken"
 description: "Supergod indisk butter chicken"
 pubDate: "2023-03-11"
-portions: 6
+servings: 6
 originalRecipeLink: "https://indianenough.se/vegetarisk-butter-chicken-murgh-makhani/"
 originalRecipeLinkText: "Indian Enough"
 categorizedIngredients:

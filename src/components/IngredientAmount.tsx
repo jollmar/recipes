@@ -2,21 +2,21 @@ import { useStore } from "@nanostores/preact";
 import { useEffect } from "preact/hooks";
 import type { z } from "zod";
 import type { ingredientSchema } from "../content/config";
-import { portions } from "../store";
+import { servings } from "../store";
 
 type Props = {
-  portions: number;
+  servings: number;
   ingredient: Pick<z.infer<typeof ingredientSchema>, "amount" | "suffix">;
 };
 
 export default function IngredientAmount(props: Props) {
-  const $portions = useStore(portions);
+  const $servings = useStore(servings);
 
   useEffect(() => {
-    portions.set(props.portions);
+    servings.set(props.servings);
   }, []);
 
-  const multiplier = $portions / props.portions;
+  const multiplier = $servings / props.servings;
 
   return (
     <span>

@@ -1,18 +1,18 @@
 import { useStore } from "@nanostores/preact";
 import { useEffect } from "preact/hooks";
-import { portions } from "../store";
+import { servings } from "../store";
 
 type Props = {
-  portions: number;
+  servings: number;
 };
 export default function RecipeResizedAlert(props: Props) {
-  const $portions = useStore(portions);
+  const $servings = useStore(servings);
 
   useEffect(() => {
-    portions.set(props.portions);
+    servings.set(props.servings);
   }, []);
 
-  if (props.portions === $portions) {
+  if (!$servings || props.servings === $servings) {
     return null;
   }
   return (
@@ -36,7 +36,7 @@ export default function RecipeResizedAlert(props: Props) {
       <div className="flex-none">
         <button
           className="btn btn-sm btn-ghost"
-          onClick={() => portions.set(props.portions)}
+          onClick={() => servings.set(props.servings)}
         >
           Återställ
         </button>

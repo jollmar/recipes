@@ -2,7 +2,7 @@
 title: "Thaikyckling med cashewnötter"
 description: "Kyckling med cashewnötter. Liknar smaken av Chop Chop"
 pubDate: "2023-03-11"
-portions: 4
+servings: 4
 originalRecipeLink: "https://zeinaskitchen.se/cashew-chicken/"
 originalRecipeLinkText: "Zeinas kitchen"
 baseIngredients:

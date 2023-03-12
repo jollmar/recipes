@@ -16,7 +16,7 @@ const {
   heroImage,
   baseIngredients,
   categorizedIngredients,
-  portions,
+  servings,
   steps,
   originalRecipeLink,
   originalRecipeLinkText,
@@ -27,7 +27,7 @@ const {
   <article>
     {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
     <h1 class="text-3xl mt-2">{title}</h1>
-    <ServingsResizer portions={portions} client:load />
+    <ServingsResizer servings={servings} client:load />
     <div class="text-sm">
       Tillagd <FormattedDate date={pubDate} />
       {
@@ -52,7 +52,7 @@ const {
     }
     <hr class="mt-4" />
 
-    <RecipeResizedAlert portions={portions} client:load />
+    <RecipeResizedAlert servings={servings} client:load />
 
     <div class="md:grid md:grid-cols-7 gap-8">
       <ul class="col-span-3">
@@ -66,7 +66,7 @@ const {
                     <span>{ingredient.title}</span>
                     <IngredientAmount
                       client:load
-                      portions={portions}
+                      servings={servings}
                       ingredient={ingredient}
                     />
                   </li>
@@ -86,7 +86,7 @@ const {
                       <span>{ingredient.title}</span>
                       <IngredientAmount
                         client:load
-                        portions={portions}
+                        servings={servings}
                         ingredient={ingredient}
                       />
                     </li>

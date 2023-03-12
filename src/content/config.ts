@@ -28,7 +28,7 @@ const recipes = defineCollection({
     heroImage: z.string().optional(),
     title: z.string(),
     description: z.string(),
-    portions: z.number(),
+    servings: z.number(),
     // Transform string to Date object
     pubDate: z
       .string()
