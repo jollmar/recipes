@@ -27,7 +27,7 @@ export default function Search(props: Props) {
             placeholder="Sök"
             className="input input-bordered input-sm"
           />
-          <button className="btn btn-sm btn-square">
+          <button className="btn btn-sm btn-secondary btn-square">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
