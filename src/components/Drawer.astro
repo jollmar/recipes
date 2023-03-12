@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { SITE_TITLE } from "../consts";
+import Search from "./Search";
 
 interface Props {
   recipes: CollectionEntry<"recipes">[];
@@ -35,6 +36,9 @@ const currentPath = pathname.slice(1);
         </div>
         <div class="flex-1 px-2 mx-2">
           <h1 class="font-bold">{SITE_TITLE}</h1>
+        </div>
+        <div>
+          <Search recipes={recipes} client:load />
         </div>
       </div>
     </div>
