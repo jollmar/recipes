@@ -16,7 +16,7 @@ export default function IngredientAmount(props: Props) {
     servings.set(props.servings);
   }, []);
 
-  const multiplier = $servings / props.servings;
+  const multiplier = $servings ? $servings / props.servings : props.servings;
 
   return (
     <span>

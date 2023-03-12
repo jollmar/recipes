@@ -13,6 +13,10 @@ export default function ServingsResizer(props: Props) {
     servings.set(props.servings);
   }, []);
 
+  if (!$servings) {
+    return null;
+  }
+
   return (
     <div className="my-4 flex items-center gap-4">
       <button
