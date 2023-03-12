@@ -29,7 +29,7 @@ categorizedIngredients:
         { title: "Garam masala", amount: 1, suffix: "tsk" },
         { title: "Chilipulver", amount: 1, suffix: "tsk" },
         { title: "Krossade tomater", amount: 4, suffix: "dl" },
-        { title: "Grädde", amount: 5, suffix: "dl" },
+        { title: "Havregrädde", amount: 5, suffix: "dl" },
       ],
     "Servering": [{ title: "Ris", amount: 8, suffix: "portioner" }],
   }

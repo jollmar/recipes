@@ -12,6 +12,7 @@ const suffixSchema = z.enum([
   "paket",
   "portioner",
   "krm",
+  "burk",
 ]);
 
 export const ingredientSchema = z.object({
