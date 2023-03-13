@@ -26,6 +26,7 @@ const stepSchema = z.string();
 const recipes = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
+    evaluation: z.boolean().default(false),
     heroImage: z.string().optional(),
     title: z.string(),
     description: z.string(),

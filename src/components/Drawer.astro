@@ -7,6 +7,10 @@ interface Props {
   recipes: CollectionEntry<"recipes">[];
 }
 const { recipes } = Astro.props;
+const recipesUnderEvaluation = recipes.filter(
+  (recipe) => recipe.data.evaluation
+);
+const keeperRecipes = recipes.filter((recipe) => !recipe.data.evaluation);
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
@@ -49,8 +53,8 @@ const currentPath = pathname.slice(1);
       <h1 class="mt-2 mb-4 font-bold">{SITE_TITLE}</h1>
       <ul class="text-base-content">
         {
-          recipes &&
-            recipes.map((recipe) => (
+          keeperRecipes &&
+            keeperRecipes.map((recipe) => (
               <li>
                 <a
                   class={
@@ -67,6 +71,31 @@ const currentPath = pathname.slice(1);
             ))
         }
       </ul>
+
+      {
+        recipesUnderEvaluation.length > 0 && (
+          <>
+            <h2 class="mt-2 mb-4 font-bold">Under utvärdering</h2>
+            <ul class="text-base-content">
+              {recipesUnderEvaluation.map((recipe) => (
+                <li>
+                  <a
+                    class={
+                      currentPath === `recipes/${recipe.slug}/` ||
+                      currentPath === `recipes/${recipe.slug}`
+                        ? "active"
+                        : ""
+                    }
+                    href={`/recipes/${recipe.slug}/`}
+                  >
+                    {recipe.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
     </div>
   </div>
 </div>
