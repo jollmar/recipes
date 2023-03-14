@@ -3,7 +3,7 @@ evaluation: true
 title: "Lins- och bönchili"
 description: ""
 pubDate: "2023-03-12"
-servings: 4
+servings: 12
 originalRecipeLink: "https://www.ica.se/recept/lins-och-bonchili-723196/"
 originalRecipeLinkText: "ICA"
 baseIngredients:
